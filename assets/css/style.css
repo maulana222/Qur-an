@@ -1,0 +1,83 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@600;700&family=Roboto:wght@700&family=Rubik:wght@700&display=swap');
+
+ .body {
+    font-family: ProximaVara, "Helvetica Neue", Helvetica, Arial;
+    border: none;
+}
+.mycolor {
+
+   background-color: #cff4d2;
+}
+.mycolor2 {
+     background-image: linear-gradient(to bottom right,  #7be495, #56c596);
+     
+}
+.gradient2 {
+      background-image: linear-gradient(180deg, #56c596, #329d9c);
+}
+.gradient3 {
+      background-image: linear-gradient(360deg, #56c596, #329d9c);
+}
+
+.mycolor3 {
+    background-color: #56c596;
+}
+.mycolor4 {
+    background-color: #329d9c;
+}
+.mycolor5 {
+    color: #205072;
+
+}
+.jenis_surah {
+
+    font-size: 12px;
+}
+.surahNumber {
+    background-color: #7be495;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 37px;
+    transform: rotate(45deg);
+    border-radius: 5px;
+    margin-right: 15px;
+    
+}
+.number{
+    font-size: 14px;
+    font-weight: bold;
+    transform: rotate(-45deg);
+
+}
+.f-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+.f-roboto {
+    font-family: 'Roboto', sans-serif;
+
+}
+.f-rubik {
+   font-family: 'Rubik', sans-serif;
+}   
+.mysearch {
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    position: relative;
+    background-position: 98%;
+    background-image: url('https://img.icons8.com/ios-glyphs/30/search--v1.png');
+    background-repeat: no-repeat;
+}
+.odd {
+    border-radius: 7px;
+    background-color: #cff4d2;
+}
+.even {
+    border-radius: 7px;
+    background-color:  #8fe2a4;
+}
