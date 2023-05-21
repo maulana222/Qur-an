@@ -21,6 +21,7 @@ class Quran_model extends CI_MODEL {
         $this->db->or_like('arti_surah', $keywords);
         $this->db->or_like('jumlah_ayat', $keywords);
         $this->db->or_like('jenis_surah', $keywords);
+		
     }
 
     return $this->db->get('surah')->result_array();

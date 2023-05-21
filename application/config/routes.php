@@ -56,5 +56,9 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['search'] = 'Quran/search/';
 
+
+$route['login'] = 'Auth/login';
+
+
 $route['about'] = 'Pages/contack';
 $route['materi_islami'] = 'Pages/materi';

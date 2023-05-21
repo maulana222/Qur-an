@@ -1,4 +1,6 @@
  <?php $this->load->view('templates/header.php'); ?>
+ <?php $this->load->view('templates/navbar.php'); ?>
+
 <!-- Begin Page Content -->
 <div class="container-fluid gradient2 main-content mt-5 pt-5">
 
