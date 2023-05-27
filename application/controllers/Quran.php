@@ -12,10 +12,9 @@
     
     public function Surah($id){
 
-    $data['detail'] = $this->Quran_model->getAyat($id);
 
     $quranData = [
-        1 => ['jumlahAyat' => 7, 'offset' => 0, 'surahOffset' => 0, 'title' => 'Al Fatihah'],
+        1 => ['jumlahAyat' => 7, 'offset' => 1, 'surahOffset' => 0, 'title' => 'Al Fatihah'],
         2 => ['jumlahAyat' => 286, 'offset' => 7, 'surahOffset' => 1, 'title' => 'Al Baqarah'],
         3 => ['jumlahAyat' => 200, 'offset' => 293, 'surahOffset' => 2, 'title' => 'Ali Imran'],
         4 => ['jumlahAyat' => 176, 'offset' => 493, 'surahOffset' => 3, 'title' => 'An Nisa'],
@@ -24,7 +23,6 @@
         7 => ['jumlahAyat' => 206, 'offset' => 954, 'surahOffset' => 6, 'title' => 'Al A`raf'],
         8 => ['jumlahAyat' => 75, 'offset' => 1160, 'surahOffset' =>  7, 'title' => 'Al Anfal'],
         9 => ['jumlahAyat' => 129, 'offset' => 1235, 'surahOffset' => 8, 'title' => 'At Taubah'],
-        //data salah 
        10 => ['jumlahAyat' => 109, 'offset' => 1364 , 'surahOffset' => 9, 'title' => 'Yunus'],
         11 => ['jumlahAyat' => 123, 'offset' => 1473 , 'surahOffset' => 10, 'title' => 'Hud'],
         12 => ['jumlahAyat' => 111, 'offset' => 1596 , 'surahOffset' => 11, 'title' => 'Yusuf'],
@@ -137,9 +135,7 @@
         $data['bismillah'] = $this->db->get_where('quran_id', ['ayat'], 1)->result_array();
         $data['title'] = $quranData[$id]['title'];
 
-        $this->load->view('templates/header', $data);
         $this->load->view('Al-Quran/quran', $data);
-        $this->load->view('templates/footer', $data);
     }
   }
     public function search() {
@@ -151,7 +147,13 @@
 
           $this->load->view('Al-Quran/search', $data);
   }
+  public function tafsir($no){
+      
+     $data['tafsir'] = $this->Quran_model->get_Tafsir($no);
 
+     $this->load->view('Al-Quran/tafsir', $data);
+  }
 
+  
 }
 ?>  

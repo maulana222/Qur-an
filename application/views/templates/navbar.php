@@ -9,13 +9,16 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav me-auto mt-2 mt-lg-0">
             <li class="nav-item mx-1">
-              <a class="nav-link " href="<?= base_url('materi_islami')?>">Materi tajwid</a>
+              <a class="nav-link " href="<?= base_url('materi_quran')?>">Materi Quran</a>
             </li>
             <li class="nav-item mx-1  ">
               <a href="<?= base_url('about')?>" class="nav-link">About</a>
             </li>
           </ul>
+
         </div>
-          
+         <div class="d-flex justify-content-end">
+           <a href="<?= site_url('Auth')?>"><i class="fa-regular fa-user"></i></a>
+         </div>
       </div>
     </nav>

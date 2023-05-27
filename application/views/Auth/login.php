@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,23 +42,24 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-5">selamat datang admin</h1>
                                     </div>
-                                    <form class="user">
+                                 <?php if (isset($error_message)) { ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= $error_message ?>
+                                    </div>
+                                <?php } ?>
+
+                                    <form class="user" method="post" action="<?= site_url('Auth/')?>">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="email" aria-describedby="emailHelp" name="email"
                                                 placeholder="Enter Email Address...">
-                                        </div>
+                                            </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="Password" placeholder="Password" name="password" >
+                                            id="Password" placeholder="Password" name="password" >
+                                            <?= form_error('password', '<small class="text-danger pl-4"> ,</small>')?>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
+                                     
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>

@@ -58,7 +58,11 @@ $route['search'] = 'Quran/search/';
 
 
 $route['login'] = 'Auth/login';
+$routes[''] = 'ProdukController/detail/$1';
 
 
 $route['about'] = 'Pages/contack';
-$route['materi_islami'] = 'Pages/materi';
+$route['materiQuran'] = 'Pages/materi';
+
+$router['dashbord'] = "Admin/dashbord";
+$router['login'] = "Auth/";

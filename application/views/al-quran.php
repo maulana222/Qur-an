@@ -1,7 +1,7 @@
  <?php $this->load->view('templates/header.php'); ?> 
  <?php $this->load->view('templates/navbar.php'); ?> 
  <?php $this->load->view('templates/main.php'); ?>
-<div class="container-fuid gradient3 pt-5">
+<div class="container-fuid gradient3 py-5">
      <div class="container">
       
 
@@ -21,9 +21,18 @@
                   </div>
                 </a>
             </div>
+            
           <?php endforeach;?>
         </div>
      </div>
   </div>
-<!-- End of Main Content -->
+<footer class="container-fluid gradient4 pt-4 mx-auto shadow-top pb-3" >
+    <ul class="medsos w-25">
+      <li><a title="facebook" href="https://web.facebook.com/maulanaergialip.falah" ><i class="fa-brands fa-facebook fa-lg"></i></a></li>
+      <li><a title="instagram" href="https://www.instagram.com/maulanaergi_22/?hl=id"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
+      <li><a title="twiter" href="https://twitter.com/ergi435"><i class="fa-brands fa-twitter fa-lg"></i></a></li>
+      <li><a title="whatsapp" href="https://wa.me/082123165614"><i class="fa-brands fa-whatsapp fa-lg"></i></a></li>
+    </ul>
+   <p class="text-center">  Copyright © <?= date('Y')?></p>
+  </footer>
           <?php $this->load->view('templates/footer.php'); ?>

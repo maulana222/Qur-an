@@ -1,13 +1,23 @@
 
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@600;700&family=Roboto:wght@700&family=Rubik:wght@700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Playfair+Display:wght@600&family=Poppins:wght@600;700&family=Roboto:wght@700&family=Rubik:wght@700&display=swap');
+*{
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
 
- .body {
+.container {
     font-family: ProximaVara, "Helvetica Neue", Helvetica, Arial;
     border: none;
+    color: black;
+
 }
 .mycolor {
 
    background-color: #cff4d2;
+}
+.gradient1{
+    background-image: linear-gradient(145deg, #cff4d2, #7be495);
 }
 .mycolor2 {
      background-image: linear-gradient(to bottom right,  #7be495, #56c596);
@@ -18,8 +28,10 @@
 }
 .gradient3 {
       background-image: linear-gradient(360deg, #56c596, #329d9c);
+    }
+.gradient4 {
+      background-image: linear-gradient(145deg,  #316d6c, #205072);
 }
-
 .mycolor3 {
     background-color: #56c596;
 }
@@ -27,11 +39,9 @@
     background-color: #329d9c;
 }
 .mycolor5 {
-    color: #205072;
-
+    background-color: #205072;
 }
 .jenis_surah {
-
     font-size: 12px;
 }
 .surahNumber {
@@ -62,6 +72,15 @@
 .f-rubik {
    font-family: 'Rubik', sans-serif;
 }   
+.f-lato {
+   font-family: 'Lato', sans-serif;
+}
+.f-playfair {
+    font-family: 'Playfair Display', serif;
+}
+.style-text {
+    text-indent: 80px;
+}
 .mysearch {
     width: 100%;
     border-radius: 15px;
@@ -80,4 +99,18 @@
 .even {
     border-radius: 7px;
     background-color:  #8fe2a4;
+}
+a {
+    display: block;
+    color: black;
+    text-decoration : none;
+}
+a:hover {
+    color: #329d9c;
+}
+.medsos {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
 }
