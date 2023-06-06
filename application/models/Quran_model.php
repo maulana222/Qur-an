@@ -41,6 +41,18 @@ class Quran_model extends CI_MODEL {
         return false;
     }
 }
+public function get_surah_ids() {
+    $this->db->select('id_surah');
+    $query = $this->db->get('surah');
+
+    $result = array();
+    foreach ($query->result() as $row) {
+        $result[] = $row->id_surah;
+    }
+
+    return $result;
+}
+
 }
 
 ?>

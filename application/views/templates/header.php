@@ -12,9 +12,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link href="<?= base_url()?>assets/css/style.css" rel="stylesheet">
   <link href="<?= base_url()?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <script src="https://kit.fontawesome.com/62d140411f.js" crossorigin="anonymous"></script>
   <link href="<?= base_url()?>assets/css/sb-admin-2.min.css" rel="stylesheet">
-
+  <link rel="shortcut icon" href="<?= base_url()?>assets/img/LOGOQuran.png" type="image/x-icon">
+  <script src="https://kit.fontawesome.com/62d140411f.js" crossorigin="anonymous"></script>
     <!-- Custom styles for this template-->
 
    

@@ -4,7 +4,7 @@
          <img class="object-fit-cover" src="<?php echo base_url()?>assets/img/kaligrafi.png" alt="" width="100%" >
         </div>
         <div class="col-sm-7">
-           <form action="<?= site_url('Quran/search')?>" method="post">
+           <form action="<?= site_url('search')?>" method="post">
              <input type="text" name="keyword" class="mysearch  shadow-lg" placeholder="masukan nama surah" >
            </form>
         </div>

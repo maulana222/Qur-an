@@ -8,11 +8,8 @@
         $this->load->view('al-quran', $data);
     }
 
-
-    
     public function Surah($id){
-
-
+      
     $quranData = [
         1 => ['jumlahAyat' => 7, 'offset' => 1, 'surahOffset' => 0, 'title' => 'Al Fatihah'],
         2 => ['jumlahAyat' => 286, 'offset' => 7, 'surahOffset' => 1, 'title' => 'Al Baqarah'],
@@ -129,16 +126,21 @@
         113 => ['jumlahAyat' => 5, 'offset' => 6225 , 'surahOffset' => 112, 'title' => 'Al Falaq'],
         114 => ['jumlahAyat' => 6, 'offset' => 6230 , 'surahOffset' => 113, 'title' => 'An Nas'],
     ];
+    
+    
+    
+
     if (array_key_exists($id, $quranData)) {
         $data['quran'] = $this->db->get('quran_id', $quranData[$id]['jumlahAyat'], $quranData[$id]['offset'])->result_array();
         $data['surah'] = $this->db->get_where('surah', ['arti_surah'], 1, $quranData[$id]['surahOffset'])->result_array();
         $data['bismillah'] = $this->db->get_where('quran_id', ['ayat'], 1)->result_array();
         $data['title'] = $quranData[$id]['title'];
-
+        
+       
         $this->load->view('Al-Quran/quran', $data);
     }
   }
-    public function search() {
+    public function search() {  
       //ambil data dari keybord
 
 			    $data['keywords'] = $this->input->post('keyword');
@@ -147,6 +149,35 @@
 
           $this->load->view('Al-Quran/search', $data);
   }
+  public function searchayat() {
+    // Untuk memanipulasi elemen HTML
+    $id = $this->input->get('keysurah');
+    $this->load->library('parser');
+
+    // Load view yang berisi elemen-elemen HTML
+    $html = $this->load->view('Al-Quran/quran', '', true);
+
+    // Parse HTML menggunakan library "parser"
+    $parsedHtml = $this->parser->parse_string($html, [], true);
+
+    // Cari elemen dengan ID tertentu menggunakan metode strpos()
+    $startPos = strpos($parsedHtml, 'id="' . $id . '"');
+    
+    if ($startPos !== false) {
+        $startPos += strlen('id="' . $id . '"');
+        $endPos = strpos($parsedHtml, '>', $startPos);
+        $element = substr($parsedHtml, $startPos, $endPos - $startPos);
+
+        // Tampilkan hasil pencarian
+        echo $element;
+    } else {
+        echo "Elemen dengan ID '$id' tidak ditemukan.";
+    }
+
+    // Redirect kembali ke halaman pencarian dengan anchor ID
+    redirect('Quran/ '.$id);
+}
+
   public function tafsir($no){
       
      $data['tafsir'] = $this->Quran_model->get_Tafsir($no);

@@ -55,14 +55,17 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['search'] = 'Quran/search/';
-
-
-$route['login'] = 'Auth/login';
-$routes[''] = 'ProdukController/detail/$1';
-
+$route['Quran/(:none)'] = 'Quran/Surah/$1';
 
 $route['about'] = 'Pages/contack';
-$route['materiQuran'] = 'Pages/materi';
+$route['materi_Quran'] = 'Pages/materi';
 
-$router['dashbord'] = "Admin/dashbord";
+// utuk halaman admin
 $router['login'] = "Auth/";
+$router['dashbord'] = "Admin/dashbord";
+$route['admin'] = 'admin/index';
+$router['surah'] = "Admin/surah";
+$router['create'] = "Admin/create";
+$router['update'] = "Admin/update";
+
+

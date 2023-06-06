@@ -17,8 +17,5 @@
           </ul>
 
         </div>
-         <div class="d-flex justify-content-end">
-           <a href="<?= site_url('Auth')?>"><i class="fa-regular fa-user"></i></a>
-         </div>
       </div>
     </nav>

@@ -3,7 +3,11 @@
     
 
     public function index() {
-        $this->load->view('pages/materi');
+      
+      $data['article'] = $this->db->get('materi_quran')->result_array();
+      
+      $this->load->view('pages/materi', $data);
+        
     }
   }
 ?>

@@ -1,12 +1,12 @@
- <?php $this->load->view('templates/header.php'); ?>
- <?php $this->load->view('templates/navbar.php'); ?>
+<?php $this->load->view('templates/header')?>
+<?php $this->load->view('templates/sidebar')?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid gradient2 main-content  mt-5 pt-5">
-<a href="#10">Go to Element</a>
+
 <div class="container f-rubik fs-6 ">
     <span class="d-flex justify-content-end ">
-       <?= anchor('quran', '<div class="btn btn-sm bg-primary px-3 py-2 text-warning"><i class="fa-solid fa-chevron-left"> </i>    Kembali </div>'); ?>
+       <?= anchor('quran', '<div class="btn btn-sm bg-primary px-3 py-2 text-dark"><i class="fa-solid fa-chevron-left"> </i>    Kembali </div>'); ?>
     </span>
      <h1 class ><?= $title; ?> </h1>
         <?php foreach ($surah as $s) : ?>
@@ -20,24 +20,22 @@
             <p class="fs-5"><?= $b['arti_ayat']; ?></p>
             <?php endforeach; ?>
             <div class="px-4 py-5">
-              <form action="<?= site_url('Quran/Surah/')?>" method="get">
+              <form action="<?= site_url('Quran/searchayat')?>" method="get">
                 <input type="text" name="keysurah" class="mysearch  shadow-lg" placeholder="masukan nomor surah" >
               </form>
             </div>
   </div>
-</div> 
+ </div> 
 </div>
-<div class="gradient3 pt-5  container-fluid ">
-  
-  <?php foreach ($quran as $q) : ?>
-  <div class=" pt-5 " id="<?= $q['nomor_ayat']?>" >
- 
-    <div class="container " >
-       <div class="f-popins position-relative" id="target">  
+<div class="container-fluid gradient3 pt-5 pb-5">
+  <div class="content">
+    <div class="container">
+      <?php foreach ($quran as $q) : ?>
+       <div class="f-popins">  
           <div class="<?php echo ($q['id_quran'] % 2 == 0) ? 'even' : 'odd'; ?> mt-5 shadow">
-           <div class="number-ayat"><?= $q['nomor_ayat']?></div>
-            <div class="card-body px-5 py-4" ">
-              <h5 class="card-title fs-2  justify-content-end d-flex text-end fw-bold " ><?=$q['ayat']; ?></h5>
+           <?= $q['nomor_ayat']?>
+            <div class="card-body px-5 py-4" id="<?php $q['nomor_ayat']?>">
+              <h5 class="card-title fs-2 justify-content-end d-flex text-end fw-bold text-rtl"><?=$q['ayat']; ?></h5>
               <p class="d-flex mt-3 fw-bold  f-roboto"><?= $q['latin']?></p>
                <P href="#" class="pt-4 f-6 fw-bold f-rubik"><?= $q['arti_ayat']; ?></P>
 
@@ -48,12 +46,11 @@
               </div>
             </div>
           </div>
+        <?php endforeach; ?>
         </div>
-  
     </div>
   </div>
+</div>
 
-  
-  <?php endforeach; ?>
-  </div>
-  
+
+<?php $this->load->view('templates/footer_admin');?>
