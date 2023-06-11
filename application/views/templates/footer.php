@@ -1,5 +1,5 @@
-<footer class="container-fluid gradient4 pt-2 mx-auto shadow-top pb-2 footer-style"  >
-    <ul class="medsos w-25">
+<footer class="container-fluid gradient4 pt-2 mx-auto shadow-top pb-2 footer-style">
+    <ul class="medsos w-25 ">
       <li><a title="facebook" href="https://web.facebook.com/maulanaergialip.falah" ><i class="fa-brands fa-facebook fa-lg"></i></a></li>
       <li><a title="instagram" href="https://www.instagram.com/maulanaergi_22/?hl=id"><i class="fa-brands fa-instagram fa-lg"></i></a></li>
       <li><a title="twiter" href="https://twitter.com/ergi435"><i class="fa-brands fa-twitter fa-lg"></i></a></li>

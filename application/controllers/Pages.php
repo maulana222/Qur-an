@@ -3,7 +3,15 @@
     
 
     public function materi() {
-        $this->load->view('pages/materi');
+      $this->load->model('Admin_model');
+      $data['article'] = $this->Admin_model->get_data_with_join();
+      
+      $this->load->view('pages/materi', $data);
+      
+    }
+    public function about(){
+      $this->load->view('pages/about');
+
     }
   }
 ?>

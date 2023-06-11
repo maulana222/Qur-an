@@ -3,8 +3,6 @@
  <?php $this->load->view('templates/main.php'); ?>
 <div class="container-fuid gradient3 py-5">
      <div class="container">
-      
-
          <div class="row mt-1" id="daftar-surah">
           <?php foreach($surah as $srt) : ?>
            

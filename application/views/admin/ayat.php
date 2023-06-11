@@ -19,12 +19,7 @@
             <h3 class="fs-2 fw-bold "><?= $b['ayat']; ?></h3>
             <p class="fs-5"><?= $b['arti_ayat']; ?></p>
             <?php endforeach; ?>
-            <div class="px-4 py-5">
-              <form action="<?= site_url('Quran/searchayat')?>" method="get">
-                <input type="text" name="keysurah" class="mysearch  shadow-lg" placeholder="masukan nomor surah" >
-              </form>
-            </div>
-  </div>
+      </div>
  </div> 
 </div>
 <div class="container-fluid gradient3 pt-5 pb-5">

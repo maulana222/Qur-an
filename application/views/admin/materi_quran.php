@@ -2,7 +2,6 @@
 <?php $this->load->view('templates/sidebar')?>
 <div class="px-3 py-1">
    <h1 id="test">Data </h1>
-
   <table class="table table-bordered border-dark table-striped w-100 text-center">
     <tr>  
       <th>No</th>
@@ -17,7 +16,6 @@
     <?php $i = 1 ;
         foreach ($records as $record) { ?>
       <tr class="pf">
-
         <td><?= $i ?></td>
         <td><?= $record['judul_materi'] ?></td>
         <td><?= $record['surah'] ?></td>
@@ -26,12 +24,30 @@
         <td id="dataMateri"><?= $record['isi_materi'] ?></td>
         <td>
           <a href="<?= site_url('Admin/update/'.$record['id_materi']); ?>">Edit</a> ||
-          <a href="<?= site_url('Admin/delete/'.$record['id_materi']); ?>">Delete</a>
+          <a href="<?= site_url('Admin/delete/'.$record['id_materi']); ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</a>
         </td>
       </tr>
     <?php } $i++;?>
   </table>
   <a  class ="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahdata" href="<?= site_url('Admin/create'); ?>">Add New</a>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">hapus</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       apakah kamu yakin ingin menghapus materi quran ini
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">ya</button>
+      </div>
+    </div>
+  </div>
 </div>
 
  <!-- form  untuk tambah data -->
@@ -81,16 +97,7 @@
  </div>
  
  <script>
-  var modalId = document.getElementById('modalId');
- 
-  modalId.addEventListener('show.bs.modal', function (event) {
-      // Button that triggered the modal
-      let button = event.relatedTarget;
-      // Extract info from data-bs-* attributes
-      let recipient = button.getAttribute('data-bs-whatever');
- 
-    // Use above variables to manipulate the DOM
-  });
+
    function displaySelectedSurah() {
       var select = document.getElementById("surahList");
       var surahNumber = select.value;

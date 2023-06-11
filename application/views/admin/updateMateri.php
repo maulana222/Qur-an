@@ -11,26 +11,30 @@
           </div>
       <div class="modal-body">
         <div class="container-fluid">
-            <form class="row g-3" method="post" action="update/" enctype="multipart/form-data">
+            <form class="row g-3" method="post" action="<?= site_url('Admin/update/'.$record['id_materi'])?>" enctype="multipart/form-data">
               <div class="col-md-6">
                   <label for="inputEmail4" class="form-label">Judul</label>
                   <input type="text" value="<?= $record['judul_materi']; ?>" name="judul" class="form-control" id="inputEmail4">
               </div>
               <div class="col-6">
                   <select id="surahList" name="surahList" onchange="displaySelectedSurah()">
-                      <option disabled selected>surah</option>
-                      <?php foreach ($surahNames as $surahName) { ?>
-                          <option value="<?php echo $surahName['id_surah']; ?>"><?php echo $surahName['surah']; ?></option>
-                      <?php } ?>
-                  </select>
+                    <option disabled>surah</option>
+                    <?php foreach ($surahNames as $surahName) { ?>
+                        <option value="<?= $surahName['id_surah']; ?>" <?php if ($surahName['id_surah'] == $record['id_surah']) echo 'selected'; ?>>
+                            <?= $surahName['surah']; ?>
+                        </option>
+                    <?php } ?>
+                </select>
               </div>
               <div class="col-6">
                   <label for="inputAddress2" class="form-label">ayat</label>
                   <input type="text" name="ayat" value="<?= $record['nomor_ayat']; ?>" class="form-control" id="inputAddress2" placeholder="masukan ayat">
               </div>
               <div class="col-md-6">
-                  <input type="file" name="gambar" value="" class="form-control" id="inputCity">
-                  <img src="<?= base_url('assets/upload').$record['gambar']; ?>" >
+                <input type="file" name="gambar" class="form-control" value="this">
+                <?php if (!empty($record['gambar'])) { ?>
+                    <img src="<?= base_url('assets/upload/'.$record['gambar']); ?>" alt="Gambar saat ini" width="100%">
+                <?php } ?>
               </div>
               <div class="col-md-12">
                   <label for="textisi" class="form-label">isi materi</label>

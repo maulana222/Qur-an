@@ -36,8 +36,10 @@ class Admin_model extends CI_Model {
         $query = $this->db->get('surah');
         return $query->result_array();
     }
-     // Fungsi untuk mendapatkan ID surah berdasarkan nama surah
+  public function getdataAdmin(){
+  return $this->db->get('admin')->result_array();
 
-    }
+  }
+}
 
 ?>

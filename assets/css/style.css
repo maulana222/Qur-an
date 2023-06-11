@@ -4,16 +4,15 @@
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+   
 }
 
 .container {
     font-family: ProximaVara, "Helvetica Neue", Helvetica, Arial;
     border: none;
-    color: black;
 
 }
-
-
 .mycolor {
     background-color: #42ad81;
 }
@@ -63,9 +62,7 @@
     transform: rotate(-45deg);
 
 }
-.f-poppins {
-    font-family: 'Poppins', sans-serif;
-}
+
 .f-roboto {
     font-family: 'Roboto', sans-serif;
 }
@@ -81,17 +78,7 @@
 .style-text {
     text-indent: 80px;
 }
-.mysearch {
-    width: 100%;
-    border-radius: 15px;
-    padding: 10px 20px;
-    outline: none;
-    border: none;
-    position: relative;
-    background-position: 98%;
-    background-image: url('https://img.icons8.com/ios-glyphs/30/search--v1.png');
-    background-repeat: no-repeat;
-}
+
 .odd {
     border-radius: 7px;
     background-color: #cff4d2;
@@ -101,7 +88,6 @@
     background-color:  #8fe2a4;
 }
 a {
-    color: black;
     text-decoration : none;
 }
 a:hover {
@@ -116,25 +102,67 @@ a:hover {
 
 .number-ayat {
    display: inline-block;
-   width: 70px;
-   height: 70px;
+   width: 60px;
+   height: 60px;
    position: absolute;
    text-align: center;
-   line-height: 70px;
+   line-height: 60px;
    font-weight: bold;
    background-repeat: no-repeat;
    background-image: url(../img/islam.png);
-   background-size: 70px;
+   background-size: 60px;
 }
-.footer-style {
-  width: 100%;
+.footer-style , a {
+    color: black;
 }
-.tafsiran-style {
-    height: 100vh;
+.tafsiran-style  p {
+    text-align: justify;
 }
 .date {
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: black;
+   position: absolute;
+   top: 0;
+   right: 0;
+}
+.fs-7 {
+    font-size: 14px;
+}
+.color-dark {
+    color: rgb(34, 31, 31);
+}
+.text-indent {
+  text-indent: 2em; /* Atur nilai indentasi sesuai kebutuhan */
+}
+.mysearch {
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    position: relative;
+    background-position: 95%;
+    background-size: 20px;
+    background-image: url('https://img.icons8.com/ios-glyphs/30/search--v1.png');
+    background-repeat: no-repeat;
+}
+
+
+@media only screen and (max-width: 500px) {
+     *{
+        font-size: 12px;
+        color: black;
+     }
+ .mysearch {
+    width: 100%;
+    border-radius: 15px;
+    padding: 10px 15px;
+    outline: none;
+    border: none;
+    position: relative;
+    font-size: 12px;
+    background-position: 95%;
+    background-size: 20px;
+    background-image: url('https://img.icons8.com/ios-glyphs/30/search--v1.png');
+    background-repeat: no-repeat;
+}
+
 }

@@ -57,8 +57,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['search'] = 'Quran/search/';
 $route['Quran/(:none)'] = 'Quran/Surah/$1';
 
-$route['about'] = 'Pages/contack';
-$route['materi_Quran'] = 'Pages/materi';
+$route['about'] = 'Pages/about';
+$route['materi_quran'] = 'Pages/materi';
 
 // utuk halaman admin
 $router['login'] = "Auth/";
@@ -67,5 +67,7 @@ $route['admin'] = 'admin/index';
 $router['surah'] = "Admin/surah";
 $router['create'] = "Admin/create";
 $router['update'] = "Admin/update";
+$route['Surah/(:any)'] = 'Surah/searchayat';
+
 
 
