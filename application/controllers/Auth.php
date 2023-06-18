@@ -9,7 +9,7 @@ class Auth extends CI_Controller {
     public function index() {
         // Cek apakah pengguna sudah login sebelum
         // Validasi form login
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         // Cek apakah form validasi berhasil
@@ -23,45 +23,43 @@ class Auth extends CI_Controller {
     }
 
     private function login() {
-        // Proses autentikasi dengan database
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
+    // Proses autentikasi dengan database
+    $username = $this->input->post('username');
+    $password = $this->input->post('password');
 
-        // Cek autentikasi dengan database (misalnya tabel admin)
-        $user = $this->authenticate($email, $password);
+    // Cek autentikasi dengan database (misalnya tabel admin)
+    $user = $this->authenticate($username, $password);
 
-        if ($user) {
-            // Autentikasi berhasil, buat session
+    if ($user) {
+       
             $data = array(
                 'user_id' => $user->id,
-                'email' => $user->email,
+                'username' => $user->username,
+                'status' => $user->status,
                 'logged_in' => TRUE
             );
             $this->session->set_userdata($data);
-
             redirect('admin');
-            // Contoh: Redirect ke halaman admin setelah login berhasil
-        } else {
-            // Autentikasi gagal, tampilkan pesan error
-            $data['error_message'] = 'Email atau password salah.';
-            $this->load->view('Auth/login', $data);
+    } else {
+        // Autentikasi gagal, tampilkan pesan error
+        $data['error_message'] = 'Username atau password salah.';
+        $this->load->view('Auth/login', $data);
+    }
+}
+
+private function authenticate($username, $password) {
+    // Lakukan proses autentikasi dengan database (contoh sederhana)
+    $user = $this->db->get_where('admin', array('username' => $username))->row();
+
+    if ($user) {
+        // Verifikasi password dengan hash yang ada dalam database
+        if (password_verify($password, $user->password)) {
+            return $user;
         }
     }
 
-    private function authenticate($email, $password) {
-        // Lakukan proses autentikasi dengan database (contoh sederhana)
-        $user = $this->db->get_where('admin', array('email' => $email))->row();
-
-        if ($user) {
-            // Verifikasi password dengan hash yang ada dalam database
-            if (password_verify($password, $user->password)) {
-                return $user;
-            }
-        }
-
-        return false;
-    }
-
+    return false;
+}
     public function logout() {
         // Hapus session dan arahkan ke halaman login
         $this->session->unset_userdata('logged_in');

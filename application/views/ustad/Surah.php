@@ -1,5 +1,5 @@
 <?php $this->load->view('templates/header')?>
-<?php $this->load->view('templates/sidebar')?>
+<?php $this->load->view('templates/sidebar_for_ustad')?>
 
 <h2 class="text-center text-dark">my Quran</h2>
 <div class="container-fuid pt-5 gradient3  py-4 ">

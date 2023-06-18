@@ -1,12 +1,12 @@
 <?php $this->load->view('templates/header')?>
-<?php $this->load->view('templates/sidebar')?>
+<?php $this->load->view('templates/sidebar_for_ustad')?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid gradient2 main-content  mt-5 pt-5 cjr color-dark">
 
 <div class="container f-rubik fs-6 ">
     <span class="d-flex justify-content-end ">
-       <?= anchor('quran', '<div class="btn btn-sm bg-primary px-3 py-2 text-dark"><i class="fa-solid fa-chevron-left"> </i>    Kembali </div>'); ?>
+       <?= anchor('Ustad/surah', '<div class="btn btn-sm bg-primary px-3 py-2 text-dark"><i class="fa-solid fa-chevron-left"> </i>    Kembali </div>'); ?>
     </span>
      <h1 class ><?= $title; ?> </h1>
         <?php foreach ($surah as $s) : ?>

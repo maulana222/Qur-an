@@ -1,5 +1,5 @@
   <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div id="wrapper" >
 
         <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -18,23 +18,18 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="<?= site_url('Admin/materi_Alquran')?>">
+                <a class="nav-link" href="<?= site_url('ustad/materi_Alquran')?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Materi Qur'an</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= site_url('Admin/surah')?>">
+                <a class="nav-link" href="<?= site_url('ustad/surah')?>">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Al-Qur'an</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<?= site_url('Admin/data_admin')?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Data Admin</span></a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="<?= site_url('Auth/logout')?>" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -56,7 +51,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">master</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('username') ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="<?= base_url('assets/img/undraw_profile.svg');?>">
                             </a>

@@ -59,15 +59,12 @@ $route['Quran/(:none)'] = 'Quran/Surah/$1';
 
 $route['about'] = 'Pages/about';
 $route['materi_quran'] = 'Pages/materi';
-
-// utuk halaman admin
 $router['login'] = "Auth/";
 $router['dashbord'] = "Admin/dashbord";
-$route['admin'] = 'admin/index';
+$route['admin'] = 'Admin/index';
 $router['surah'] = "Admin/surah";
 $router['create'] = "Admin/create";
 $router['update'] = "Admin/update";
+$router['delate'] = "Admin/delate";
+
 $route['Surah/(:any)'] = 'Surah/searchayat';
-
-
-

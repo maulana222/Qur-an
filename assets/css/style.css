@@ -112,11 +112,14 @@ a:hover {
    background-image: url(../img/islam.png);
    background-size: 60px;
 }
-.footer-style , a {
+.footer-style i {
     color: black;
 }
-.tafsiran-style  p {
+.tafsiran-style  {
     text-align: justify;
+     height: 100vh;
+     padding-top: 100px;
+     overflow-y: auto;
 }
 .date {
    position: absolute;
@@ -145,6 +148,18 @@ a:hover {
     background-repeat: no-repeat;
 }
 
+.cjr {
+    overflow-y: auto;
+    height: 100vh;
+}
+.materi-style {
+    width: 100%;
+    font-size: 15px;
+}
+.audio {
+    background-color: white;
+    
+}
 
 @media only screen and (max-width: 500px) {
      *{

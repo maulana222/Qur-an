@@ -27,8 +27,8 @@
                                     <form class="user" method="post" action="<?= site_url('Auth/')?>">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                id="email" aria-describedby="emailHelp" name="email"
-                                                placeholder="Enter Email Address...">
+                                                id="email" aria-describedby="emailHelp" name="username"
+                                                placeholder="Enter username ddress...">
                                             </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
@@ -42,9 +42,6 @@
                                        
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small text-white" href="forgot-password.html ">Forgot Password?</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

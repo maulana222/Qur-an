@@ -1,7 +1,7 @@
 <?php $this->load->view('templates/header.php'); ?>
 <?php $this->load->view('templates/navbar.php'); ?>
 
-<div class="container-fluid pt-5 gradient3" style="height: 100vh;">
+<div class="container-fluid pt-5 gradient3 color-dark" style="height: 100vh;">
     <div class="container pt-5 f-roboto">
         <h1 class="">Tentang Website ini </h1>
         <p>

@@ -1,7 +1,7 @@
 <?php $this->load->view('templates/header')?>
-<?php $this->load->view('templates/sidebar')?>
+<?php $this->load->view('templates/sidebar_for_ustad')?>
 <div class="px-3 py-1">
-   <h1 id="test">Data </h1>
+   <h1 id="test">Data <?= $this->session->userdata('username')?></h1>
   <table class="table table-bordered border-dark table-striped w-100 text-center">
     <tr>  
       <th>No</th>
@@ -83,14 +83,14 @@
               <div class="col-md-6">
                   <label for="inputCity" class="form-label">gambar</label>
                   <input type="file" name="gambar" class="form-control" id="inputCity">
-              </div>
-              <div class="col-md-12">
-                  <label for="exampleFormControlTextarea1" class="form-label">isi materi</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" name="materi" rows="3"></textarea>
-              </div>
-               <input type="text" name="user" value="master" class="form-control" id="inputCity">
+                </div>
+                <div class="col-md-12">
+                    <label for="exampleFormControlTextarea1" class="form-label">isi materi</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="materi" rows="3"></textarea>
+                </div>
+                <input type="hidden" name="user" value="<?= $this->session->userdata('username')?>" class="form-control" id="inputCity">
               <div class="col-12">
-                  <button type="submit" class="btn btn-primary">create</button>
+                  <button  type="submit" class="btn btn-primary">create</button>
               </div>
           </form>
 <!-- end form tambah data -->
