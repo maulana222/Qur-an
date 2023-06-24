@@ -88,7 +88,7 @@
                     <label for="exampleFormControlTextarea1" class="form-label">isi materi</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="materi" rows="3"></textarea>
                 </div>
-                <input type="hidden" name="user" value="<?= $this->session->userdata('username')?>" class="form-control" id="inputCity">
+                <input type="text" name="user" value="<?= $this->session->userdata('username')?>" class="form-control" id="inputCity">
               <div class="col-12">
                   <button  type="submit" class="btn btn-primary">create</button>
               </div>

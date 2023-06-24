@@ -31,7 +31,6 @@ class Auth extends CI_Controller {
     $user = $this->authenticate($username, $password);
 
     if ($user) {
-       
             $data = array(
                 'user_id' => $user->id,
                 'username' => $user->username,
@@ -64,6 +63,13 @@ private function authenticate($username, $password) {
         // Hapus session dan arahkan ke halaman login
         $this->session->unset_userdata('logged_in');
         redirect('Auth');
+    }
+    public function lupapassword(){
+        $config = [
+            'protocol' => 'smtp',
+            'smtp_host' => 'maeralfa98895@gmail.com',
+            'smtp_'
+        ];
     }
 }
 ?>
