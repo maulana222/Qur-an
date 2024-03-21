@@ -6,7 +6,7 @@ Qur'an adalah kitab agama islam . Al Quran menggantikan Kitab-kitab sebelumnya y
 
 *******************
 
-Wikipedia  : <https://id.wikipedia.org/wiki/Al-Qur%27an>`_.
+Wikipedia  : https://id.wikipedia.org/wiki/Al-Qur%27an`.
 
 *******************
 Kebutuhan
