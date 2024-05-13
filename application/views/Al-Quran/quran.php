@@ -46,15 +46,15 @@
   <div class="pt-5 " id="<?= $q['nomor_ayat']?>">
     <div class="container pt-5 color-dark">
        <div class="f-popins position-relative" id="target">  
-          <div class="<?php echo ($q['id_quran'] % 2 == 0) ? 'even' : 'odd'; ?> shadow">
+          <div class="<?php echo ($q['id'] % 2 == 0) ? 'even' : 'odd'; ?> shadow">
            <div class="number-ayat"><?= $q['nomor_ayat']?></div>
-            <div class="card-body px-5 py-4" ">
+            <div class="card-body px-5 py-4" >
               <h5 class="card-title fs-2  justify-content-end d-flex text-end fw-bold " ><?=$q['ayat']; ?></h5>
               <p class="d-flex mt-3 fw-bold  f-roboto"><?= $q['latin']?></p>
                <P href="#" class="pt-4 f-6 fw-bold f-rubik"><?= $q['arti_ayat']; ?></P>
 
               <div class="fiture d-flex justify-content-end ">
-                 <a href="<?= site_url('Quran/tafsir/'). $q['id_quran']; ?>" >
+                 <a href="<?= site_url('Quran/tafsir/'). $q['id']; ?>" >
                    <i class="fa-solid color-dark fa-book-open"></i>
                  </a>
               </div>

@@ -4,7 +4,7 @@ class Library_data_ayat {
     public function showAyat($id)
     {
         $quranData = [
-        1 => ['jumlahAyat' => 7, 'offset' => 1, 'surahOffset' => 0, 'title' => 'Al Fatihah'],
+        1 => ['jumlahAyat' => 7, 'offset' => 0, 'surahOffset' => 0, 'title' => 'Al Fatihah'],
         2 => ['jumlahAyat' => 286, 'offset' => 7, 'surahOffset' => 1, 'title' => 'Al Baqarah'],
         3 => ['jumlahAyat' => 200, 'offset' => 293, 'surahOffset' => 2, 'title' => 'Ali Imran'],
         4 => ['jumlahAyat' => 176, 'offset' => 493, 'surahOffset' => 3, 'title' => 'An Nisa'],

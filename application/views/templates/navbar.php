@@ -15,7 +15,6 @@
               <a href="<?= base_url('about')?>" class="nav-link">Tentang</a>
             </li>
           </ul>
-
         </div>
       </div>
     </nav>

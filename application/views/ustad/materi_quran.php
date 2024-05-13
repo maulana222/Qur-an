@@ -81,14 +81,18 @@
                   <input type="text" name="ayat" class="form-control" id="inputAddress2" >
               </div>
               <div class="col-md-6">
-                  <label for="inputCity" class="form-label">gambar</label>
-                  <input type="file" name="gambar" class="form-control" id="inputCity">
-                </div>
+                <label for="inputCity" class="form-label">gambar</label>
+                <input type="file" name="gambar" class="form-control" id="inputCity">
+              </div>
+              <div class="col-12">
+                  <label for="deks" class="form-label">deskripsi</label>
+                  <input type="text" name="deskripsi" class="form-control" id="deks" >
+              </div>
                 <div class="col-md-12">
                     <label for="exampleFormControlTextarea1" class="form-label">isi materi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" name="materi" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="materi" rows="10"></textarea>
                 </div>
-                <input type="text" name="user" value="<?= $this->session->userdata('username')?>" class="form-control" id="inputCity">
+                <input type="hidden" name="user" value="<?= $this->session->userdata('username')?>" class="form-control" id="inputCity">
               <div class="col-12">
                   <button  type="submit" class="btn btn-primary">create</button>
               </div>

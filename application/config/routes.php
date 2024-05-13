@@ -53,18 +53,23 @@ $route['default_controller'] = 'Quran';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-
 $route['search'] = 'Quran/search/';
-$route['Quran/(:none)'] = 'Quran/Surah/$1';
 
 $route['about'] = 'Pages/about';
 $route['materi_quran'] = 'Pages/materi';
+$route['searchHadist'] = 'Pages/searchHadist';
+$route['hadist/searchHadist'] = 'Pages/searchHadist';
+
+$route['baca'] = 'Pages/baca';
 $router['login'] = "Auth/";
 $router['dashbord'] = "Admin/dashbord";
 $route['admin'] = 'Admin/index';
 $router['surah'] = "Admin/surah";
+
 $router['create'] = "Admin/create";
 $router['update'] = "Admin/update";
 $router['delate'] = "Admin/delate";
 
 $route['Surah/(:any)'] = 'Surah/searchayat';
+
+$router['delate-category/:num'] = "Admin/deleteCategory";

@@ -1,21 +1,17 @@
 <?php $this->load->view('templates/header.php'); ?>
 <?php $this->load->view('templates/navbar.php'); ?>
 <div class="container-fluid pt-5 mt-5 pb-5 gradient3 color-dark">
-    <div class="container pt-4 f-poppins">
-        <?php foreach ($article as $list) : ?>
-            <div class="card mb-3 shadow-sm " style="max-width: 100%;">
-            <div class="row g-2 d-flex align-item-center py-2 px-2">
-                <div class="col-md-4">
-                <img src="<?= base_url('assets/upload/').$list['gambar']?>" class="img-fluid rounded-start" alt="riba">
+    <div class="container pt-4 f-poppins d-flex">
+        <?php foreach ($cards as $card) : ?>
+        <div class="card mx-2 shadow-sm" style="width: 20rem;">
+            <img src="<?= base_url('assets/upload/').$card['image']?>" style="object-fit: cover;height: 200px;" class="rounded-top card-img-top" alt="">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <p class="fs-7" style="font-size: 12px;">by <?=$card['by']?></p>
+                    <p class="fs-7 d-flex justify-content-end"><?= $card['date']?></p>
                 </div>
-                <div class="col-md-8">
-                <div class="card-body position-relative materi-style">
-                    <p class="date" style="color: grey;font-size: 13px;"><?= $list['tanggal'] ?></p>
-                    <h5 class=""><?= $list['judul_materi']?></h5>
-                    <p class="card-text w-100  text-justify" ><?= $list['isi_materi']?>terdapat pada surah <a href="<?= base_url('Quran/Surah/'. $list['id_surah']. '#'. $list['nomor_ayat']);?>"><?= $list['surah']?></a> ayat <?= $list['nomor_ayat'];?></p>
-                    <p>by <?=$list['oleh']?></p>
-                </div>
-                </div>
+                <h5 class="card-title py-3"><?= $card['judul_materi']?></h5>
+                <a  href="<?= site_url('Pages/baca?tittle='). $card['judul_materi']?>" class="d-block btn btn-primary width-100 text-center">Baca</a>
             </div>
         </div>
         <?php endforeach; ?>

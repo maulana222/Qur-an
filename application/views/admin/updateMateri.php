@@ -33,12 +33,12 @@
               <div class="col-md-6">
                 <input type="file" name="gambar" class="form-control" value="this">
                 <?php if (!empty($record['gambar'])) { ?>
-                    <img src="<?= base_url('assets/upload/'.$record['gambar']); ?>" alt="Gambar saat ini" width="100%">
+                    <img src="<?= base_url('assets/upload/'.$record['image']); ?>" alt="Gambar saat ini" width="100%">
                 <?php } ?>
               </div>
               <div class="col-md-12">
                   <label for="textisi" class="form-label">isi materi</label>
-                  <textarea class="form-control" value="" id="textisi" name="materi" rows="3"><?= $record['isi_materi']; ?></textarea>
+                  <textarea class="form-control" value="" id="textisi" name="materi" rows="3"><?= $record['content']; ?></textarea>
               </div>
               <div class="col-12">
                   <button type="submit" class="btn btn-primary">create</button>

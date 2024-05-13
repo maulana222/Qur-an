@@ -6,36 +6,39 @@ class Admin extends CI_Controller {
       $this->load->library('form_validation');
   }
   public function index() {
- if ($this->session->userdata('logged_in')) {
-     if($this->session->userdata('status') === 'master'){
-          $data['count'] = $this->db->count_all('materi_quran');
-            $data['profile'] = $this->Super_admin->getdataAdmin();
-            $this->load->view('templates/header');
-            $this->load->view('templates/sidebar', $data);
-            $this->load->view('admin/dashbord', $data);
-     }elseif($this->session->userdata('status') === 'admin') {
-            redirect('ustad/dashbord');
-     }else{
-        $data = 'user tidak di temukan';
-     }
-    }else {
-        redirect('auth');
-    } 
-  }
+	if ($this->session->userdata('logged_in')) {
+		if($this->session->userdata('role') === 'admin'){
+			$data['count'] = $this->db->count_all('materi_islam');
+				$data['profile'] = $this->Super_admin->getdata('users');
+				$this->load->view('templates/header');
+				$this->load->view('templates/sidebar', $data);
+				$this->load->view('admin/dashbord', $data);
+		}elseif($this->session->userdata('role') === 'ustad') {
+				redirect('ustad/dashbord');
+		}else{
+			echo 'user tidak di temukan';
+		}
+		}else {
+			redirect('auth');
+		} 
+	}
   public function materi_Alquran() {
-     $sesi = $this->session->userdata('status');
+     $sesi = $this->session->userdata('role');
      $user = $this->session->userdata('username');
-     if($sesi === 'master'){
+     if($sesi === 'admin'){
+
     if($this->session->userdata('logged_in')) {
         $data['surahNames'] = $this->Super_admin->getSurahNames();
+        $data['categoris'] =   $this->Super_admin->getkategori();
         $data['records'] = $this->Super_admin->get_data_with_join();
-       $this->load->view('admin/materi_quran', $data);
+        $this->load->view('admin/materi_quran', $data);
     }else {
-            redirect('auth');
+        redirect('auth');
     }
-}elseif($sesi === 'admin') {
-        if($this->session->userdata('logged_in')) {
+}elseif($sesi === 'ustad') {
+    if($this->session->userdata('logged_in')) {
         $data['surahNames'] = $this->Super_admin->getSurahNames();
+        $data['categoris'] =   $this->Super_admin->getkategori();
         $data['records'] = $this->Super_admin->get_data_byuser($user);
        $this->load->view('ustad/materi_quran', $data);
     }else {
@@ -46,10 +49,10 @@ class Admin extends CI_Controller {
 
   public function surah() {
      if($this->session->userdata('logged_in')) {
-        if($this->session->userdata('status') === 'master') {
+        if($this->session->userdata('role') === 'admin') {
              $data['surah'] = $this->db->get('surah')->result_array();
              $this->load->view('admin/surah', $data);
-        }elseif ($this->session->userdata('status') === 'admin'){
+        }elseif ($this->session->userdata('role') === 'admin'){
             $data['surah'] = $this->db->get('surah')->result_array();
             $this->load->view('ustad/surah', $data);
         }
@@ -64,8 +67,8 @@ class Admin extends CI_Controller {
    $this->load->library('Library_data_ayat');
    $quranData = $this->library_data_ayat->showAyat($id);
    
-   $sesi = $this->session->userdata('status');
-   if($sesi === 'master'){
+   $sesi = $this->session->userdata('role');
+   if($sesi === 'admin'){
      if (array_key_exists($id, $quranData) ) {
         $data['quran'] = $this->db->get('quran_id', $quranData[$id]['jumlahAyat'], $quranData[$id]['offset'])->result_array();
         $data['surah'] = $this->db->get_where('surah', ['arti_surah'], 1, $quranData[$id]['surahOffset'])->result_array();
@@ -79,7 +82,7 @@ class Admin extends CI_Controller {
      }else {
             redirect('auth');
       }
-   }elseif($sesi === 'admin') {
+   }elseif($sesi === 'ustad') {
          if (array_key_exists($id, $quranData) ) {
         $data['quran'] = $this->db->get('quran_id', $quranData[$id]['jumlahAyat'], $quranData[$id]['offset'])->result_array();
         $data['surah'] = $this->db->get_where('surah', ['arti_surah'], 1, $quranData[$id]['surahOffset'])->result_array();
@@ -107,64 +110,80 @@ public function create() {
         $this->form_validation->set_rules('judul', 'Judul', 'required');
         $this->form_validation->set_rules('surahList', 'Surah', 'required');
         $this->form_validation->set_rules('ayat', 'Ayat', 'required');
-        $this->form_validation->set_rules('materi', 'Isi Materi', 'required');
-        
+		$this->form_validation->set_rules('materi', 'Isi Materi', 'required');
         $table_name = $this->input->post('table');
-    if ($this->form_validation->run() == false) {
-        
-        $data['surahNames'] = $this->Super_admin->getSurahNames();
-        $this->load->view('Admin/materi_quran', $data);
-    }   if($table_name === 'materi_quran') {
-        // Upload gambar jika ada
-        $gambar = '';
-        if (isset($_FILES['gambar']) && $_FILES['gambar']['name'] != '') {
-            $config['upload_path'] = './assets/upload/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 5048; // 5MB
-            $config['encrypt_name'] = true;
+		
+		if ($this->form_validation->run() == false) {
+			echo $this->form_validation->run();
+			//     $data['surahNames'] = $this->Super_admin->getSurahNames();
+			//    return  $this->load->view('Admin/materi_quran', $data);
+			
+		} 
+		
+		if($table_name === 'materi_quran') {
+			// echo $this->input->post('judul');
+			// Upload gambar jika ada
+			$gambar = '';
+			if (isset($_FILES['gambar']) && $_FILES['gambar']['name'] != '') {
+				$config['upload_path'] = './assets/upload/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size'] = 5048; // 5MB
+				$config['encrypt_name'] = true;
 
-            $this->load->library('upload', $config);
+				$this->load->library('upload', $config);
 
-            if ($this->upload->do_upload('gambar')) {
-                $gambar = $this->upload->data('file_name');
-            } else {
-                $error = $this->upload->display_errors();
-                // Tampilkan pesan error jika terjadi masalah saat upload gambar
-                $data['error_message'] = $error;
-                $data['surahNames'] = $this->Super_admin->getSurahNames();
-                $this->load->view('errors/form', $data);
-                return;
-            }
-        }
-        $surahId = $this->input->post('surahList'); // Ubah variabel yang diambil dari form menjadi 'surahId'
-        $data = array(
-            'id_surah' => $surahId, // Gunakan variabel 'surahId' yang telah diubah
-            'nomor_ayat' => $this->input->post('ayat'),
-            'judul_materi' => $this->input->post('judul'),
-            'gambar' => $gambar,
-            'isi_materi' => $this->input->post('materi'),
-            'tanggal' => date('Y-m-d'), // Menambahkan tanggal saat ini
-            'oleh' =>  $this->input->post('user')
-        );
-        // Panggil model untuk menyimpan data ke database
-        $this->Super_admin->createData($table_name, $data);
-        redirect('Admin/materi_Alquran');
-    }elseif ($table_name === 'admin'){
-           $username  = $this->input->post('username');
-           $pass =  $this->input->post('password');
+				if ($this->upload->do_upload('gambar')) {
+					$gambar = $this->upload->data('file_name');
+					$surahId = $this->input->post('surahList'); // Ubah variabel yang diambil dari form menjadi 'surahId'
+					$kategori = $this->input->post('kategori'); // Ubah variabel yang diambil dari form menjadi 'surahId'
+					$data = array(
+						'id_surah' => $surahId, // Gunakan variabel 'surahId' yang telah diubah
+						'id_category' => $kategori, // Gunakan variabel 'surahId' yang telah diubah
+						'nomor_ayat' => $this->input->post('ayat'),
+						'judul_materi' => $this->input->post('judul'),
+						'image' => $gambar,
+						'content' => $this->input->post('materi'),
+						'date' => date('Y-m-d '), // Menambahkan tanggal saat ini
+						'by' =>  $this->input->post('user')
+					);
+					// Panggil model untuk menyimpan data ke database
+					$this->Super_admin->createData("materi_islam", $data);
+					redirect('Admin/materi_Alquran');
+				} 
+				 else {
+				    $error = $this->upload->display_errors();
+				    // Tampilkan pesan error jika terjadi masalah saat upload gambar
+				    $data['error_message'] = $error;
+				    $data['surahNames'] = $this->Super_admin->getSurahNames();
+				    $this->load->view('errors/form', $data);
+				    return;
+				}
+			}
+			
+		}elseif ($table_name === 'users'){
+			$username  = $this->input->post('username');
+			$pass =  $this->input->post('password');
+			
+			$dataadmin = array(
+				'username' => $username,
+				'email' => $this->input->post('email'),
+				'password' =>  password_hash($pass, PASSWORD_DEFAULT),
+				'status' => $this->input->post('status')
+				);
+				$this->Super_admin->createData($table_name, $dataadmin);
+				
+				redirect('Admin/data_admin');
+			}elseif ($table_name === 'kategori') {
 
-            $dataadmin = array(
-                'username' => $username,
-                'email' => $this->input->post('email'),
-                'password' =>  password_hash($pass, PASSWORD_DEFAULT),
-                'status' => $this->input->post('status')
-            );
-             $this->Super_admin->createData($table_name, $dataadmin);
-               
-            redirect('Admin/data_admin');
-        }
-
-    }else {
+			$kategori  = $this->input->post('kategori');
+			$datakategori = array(
+				'name_category' => $kategori,
+				);
+			$this->Super_admin->createData("kategory", $datakategori);
+			redirect('Admin/materi_Alquran');
+		}
+    }
+    else {
             redirect('auth');
       }
 }
@@ -172,12 +191,11 @@ public function create() {
     // Logika untuk menampilkan formulir edit data
       if($this->session->userdata('logged_in')) {
     if ($this->input->post()) {
-        // ...
-        // Kode untuk pemrosesan data yang diubah
+        
         $gambar = '';
         if (isset($_FILES['gambar']) && $_FILES['gambar']['name'] != '') {
             $config['upload_path'] = './assets/upload/';
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 5048; // 5MB
             $config['encrypt_name'] = true;
 
@@ -195,14 +213,15 @@ public function create() {
             }
         }
         $surahId = $this->input->post('surahList');
-        $data = array(
-            'id_surah' => $surahId,
-            'nomor_ayat' => $this->input->post('ayat'),
-            'judul_materi' => $this->input->post('judul'),
-            'gambar' => $gambar,
-            'isi_materi' => $this->input->post('materi'),
-            'tanggal' => date('Y-m-d')
-        );
+		$data = array(
+			'id_surah' => $surahId, // Gunakan variabel 'surahId' yang telah diubah
+			'nomor_ayat' => $this->input->post('ayat'),
+			'judul_materi' => $this->input->post('judul'),
+			'image' => $gambar,
+			'content' => $this->input->post('materi'),
+			'date' => date('Y-m-d '), // Menambahkan tanggal saat ini
+		);
+
 
         $this->Super_admin->update_data($id, $data);
         redirect('admin/materi_Alquran');
@@ -217,15 +236,13 @@ public function create() {
 }
 
    public function delate($id, $entity = '') {
-    // Logika untuk menghapus data dari database
-    if ($entity === 'materi_quran') {
-        $this->Super_admin->delate_data('materi_quran', $id);
+    if ($entity === 'materi_islam') {
+        $this->Super_admin->delate_data('materi_islam', $id);
         redirect('admin/materi_Alquran');
-    } elseif ($entity === 'admin') {
+    } elseif ($entity === 'ustad') {
         $this->Super_admin->delate_data('admin', $id);
         redirect('admin/data_admin');
     } else {
-        // Jika entitas tidak valid, lakukan penanganan kesalahan
         redirect('admin');
     }
 }
@@ -239,9 +256,13 @@ public function create() {
 
     public function data_admin() {
 
-    $data['admin'] = $this->Super_admin->getdataAdmin();
+    $data['admin'] = $this->Super_admin->getdata('users');
     $this->load->view('admin/dataAdmin', $data);
 }
+	public function deleteCategory($id) {
+        $this->Super_admin->categoryDelete($id);
+		return redirect('admin/materi_Alquran');
+	}
 }
 
 ?>

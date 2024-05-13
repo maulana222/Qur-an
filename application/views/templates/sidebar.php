@@ -1,7 +1,7 @@
   <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-primary accordion text-light" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= site_url('admin/')?>">

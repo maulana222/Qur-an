@@ -18,9 +18,9 @@
         <td><?= $admins['username'] ?></td>
         <td><?= $admins['email'] ?></td>
         <td><?= $admins['password'] ?></td>
-        <td><?= $admins['status']?></td>
+        <td><?= $admins['role']?></td>
         <td>
-          <a href="<?= site_url('Admin/update/'.$admins['id']); ?>">Edit</a> ||
+          <a href="<?= site_url('Admin/update/'.$admins['user_id']); ?>">Edit</a> ||
           <a href=""data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</a>
         </td>
       </tr>
@@ -37,12 +37,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       apakah kamu yakin ingin menghapus materi quran ini
+       apakah kamu yakin ingin menghapus Pengguna ini 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">
-          <a href="<?= site_url('Admin/delate/'.$admins['id']).'/admin'; ?>" class="text-light">Delete</a>
+          <a href="<?= site_url('Admin/delate/'.$admins['user_id']).'/admin'; ?>" class="text-light">Delete</a>
         </button>
       </div>
     </div>

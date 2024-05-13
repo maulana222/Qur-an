@@ -1,5 +1,6 @@
 <?php
   class Quran extends CI_Controller {
+    
     public function index() {
       
         $data['surah'] = $this->Quran_model->get_data('surah');
