@@ -114,15 +114,13 @@ public function create() {
         $table_name = $this->input->post('table');
 		
 		if ($this->form_validation->run() == false) {
-			echo $this->form_validation->run();
-			//     $data['surahNames'] = $this->Super_admin->getSurahNames();
-			//    return  $this->load->view('Admin/materi_quran', $data);
+			    $data['surahNames'] = $this->Super_admin->getSurahNames();
+			   return  $this->load->view('Admin/materi_quran', $data);
 			
 		} 
 		
 		if($table_name === 'materi_quran') {
-			// echo $this->input->post('judul');
-			// Upload gambar jika ada
+			
 			$gambar = '';
 			if (isset($_FILES['gambar']) && $_FILES['gambar']['name'] != '') {
 				$config['upload_path'] = './assets/upload/';
@@ -240,7 +238,7 @@ public function create() {
         $this->Super_admin->delate_data('materi_islam', $id);
         redirect('admin/materi_Alquran');
     } elseif ($entity === 'ustad') {
-        $this->Super_admin->delate_data('admin', $id);
+        $this->Super_admin->delate_data('materi_islam', $id);
         redirect('admin/data_admin');
     } else {
         redirect('admin');

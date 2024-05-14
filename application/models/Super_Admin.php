@@ -52,8 +52,8 @@ public function get_data_with_join() {
       $this->db->select('materi_islam.*, surah.surah, surah.id_surah');
       $this->db->from('materi_islam');
       $this->db->join('surah', 'surah.id_surah = materi_islam.id_surah');
-     $this->db->where('materi_islam.oleh', $user);
-    $query = $this->db->get();
+    $this->db->where('materi_islam.by', $user);
+    	$query = $this->db->get();
 
     return $query->result_array();
 }

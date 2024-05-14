@@ -1,7 +1,7 @@
 <nav class="f-poppins navbar navbar-expand-lg navbar-light  fixed-top shadow-sm  mycolor2 f-poppins">
       <div class="container">
         <a href="<?=base_url('')?>">
-         <img src="<?= base_url()?>assets/img/LOGOQuran.PNG" alt="" width="60">
+         <img src="<?= base_url()?>assets/img/LOGOQuran.png" alt="" width="60">
         </a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon"></span>

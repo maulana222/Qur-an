@@ -4,6 +4,7 @@ require_once 'Admin.php';
 class Ustad extends Admin {
     public function __construct() {
         parent::__construct();
+		$this->load->model('Super_admin');
       
     }
 
@@ -12,8 +13,8 @@ class Ustad extends Admin {
             redirect('auth');
         } else {
             // Tampilkan halaman dashboard untuk Ustad
-            $data['count'] = $this->db->count_all('materi_quran');
-            $data['profile'] = $this->Super_admin->getdataAdmin();
+            $data['count'] = $this->db->count_all('materi_islam');
+            $data['profile'] = $this->Super_admin->get_data_with_join();
             $this->load->view('templates/header');
             $this->load->view('templates/sidebar_for_ustad', $data);
             $this->load->view('ustad/dashbord', $data);
@@ -29,8 +30,6 @@ class Ustad extends Admin {
             redirect('auth');
         }
     }
-
-   
 }
 
 ?>

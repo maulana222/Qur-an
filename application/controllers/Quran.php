@@ -40,4 +40,3 @@
      $this->load->view('Al-Quran/tafsir', $data);
   }
 }
-?>  

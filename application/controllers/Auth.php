@@ -65,7 +65,7 @@ private function authenticate($username, $password) {
     public function Daftar() {
 
         $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[admin.email]');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
         $this->form_validation->set_rules('pass1', 'Password', 'required');
         $this->form_validation->set_rules('pass2', 'Repeat Password', 'required|matches[pass1]');
 
@@ -76,7 +76,7 @@ private function authenticate($username, $password) {
             $email = $this->input->post('email');
             $password1 = $this->input->post('pass1');
             $password2 = $this->input->post('pass2');
-            $status = 'admin'; // Set status sebagai admin
+            $status = 'ustad'; // Set status sebagai admin
 
             // Validasi password
             if ($password1 !== $password2) {
@@ -92,15 +92,13 @@ private function authenticate($username, $password) {
                 'username' => $username,
                 'email' => $email,
                 'password' => password_hash($password1, PASSWORD_DEFAULT), // Encrypt password sebelum disimpan
-                'status' => $status,
+                'role' => $status,
                 'reset_token' => $resetToken
             );
-            $this->db->insert('admin', $data); // Ganti 'nama_tabel' dengan nama tabel yang sesuai
 
-            // Lakukan langkah selanjutnya, seperti mengirim email konfirmasi atau melakukan redirect ke halaman login
-           
-                                    // set konfigurasi email library
-      
+            $this->db->insert('users', $data); 
+
+			return redirect('Auth');
                                     
         }
     }

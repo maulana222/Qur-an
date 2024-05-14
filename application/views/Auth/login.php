@@ -63,9 +63,9 @@
                                         </button>
                                     </form>
                                     <hr>
-                                      <div class="text-center">
+                                      <!-- <div class="text-center">
                                         <a class="small" href="<?= site_url('Auth/lupaPassword')?>">Lupa Password?</a>
-                                    </div>
+                                    </div> -->
                                     <div class="text-center">
                                         <a class="small" href="<?= site_url('Auth/Daftar')?>">Buat Akun</a>
                                     </div>

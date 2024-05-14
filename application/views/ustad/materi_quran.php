@@ -20,8 +20,8 @@
         <td><?= $record['judul_materi'] ?></td>
         <td><?= $record['surah'] ?></td>
         <td><?= $record['nomor_ayat'] ?></td>
-        <td><img src="<?= base_url('assets/upload/').$record['gambar']?>" style="" width="150px" ></td>
-        <td id="dataMateri" width="400"><?= $record['isi_materi'] ?></td>
+        <td><img src="<?= base_url('assets/upload/').$record['image']?>" style="" width="150px" ></td>
+        <td id="dataMateri" width="400"><?= $record['content'] ?></td>
         <td>
           <a href="<?= site_url('Admin/update/'.$record['id_materi']); ?>">Edit</a> ||
           <a href="<?= site_url('Admin/delete/'.$record['id_materi']); ?>" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</a>
@@ -68,33 +68,37 @@
                   <label for="inputEmail4" class="form-label">Judul</label>
                   <input type="text" name="judul" class="form-control" id="inputEmail4">
               </div>
-              <div class="col-6">
-                  <select id="surahList" name="surahList" onchange="displaySelectedSurah()">
+              <div class="col-6 mt-5">
+                  <select class="w-100 px-2 py-1" id="kategori" name="kategori" onchange="displaySelectedSurah()">
+                      <option value="" disabled selected>kategori Materi</option>
+                      <?php foreach ($categoris as $categori) { ?>
+                          <option value="<?php echo $categori['id_kategory']; ?>"><?php echo $categori['name_category']; ?></option>
+                      <?php } ?>
+                  </select>
+              </div>
+              <div class="col-3 mt-5">
+                  <select class="w-100 px-2 py-1" id="surahList" name="surahList" onchange="displaySelectedSurah()">
                       <option value="" disabled selected>Pilih Surah</option>
                       <?php foreach ($surahNames as $surahName) { ?>
                           <option value="<?php echo $surahName['id_surah']; ?>"><?php echo $surahName['surah']; ?></option>
                       <?php } ?>
                   </select>
               </div>
-              <div class="col-6">
-                  <label for="inputAddress2" class="form-label">ayat</label>
-                  <input type="text" name="ayat" class="form-control" id="inputAddress2" >
+              <div class="col-3">
+                <label for="inputAddress2" class="form-label">ayat</label>
+                <input type="text" name="ayat" class="form-control" id="inputAddress2" >
               </div>
               <div class="col-md-6">
-                <label for="inputCity" class="form-label">gambar</label>
+                <label for="inputCity" class="form-label">Upload gambar</label>
                 <input type="file" name="gambar" class="form-control" id="inputCity">
               </div>
-              <div class="col-12">
-                  <label for="deks" class="form-label">deskripsi</label>
-                  <input type="text" name="deskripsi" class="form-control" id="deks" >
+              <div class="col-md-12">
+                  <label for="materi" class="form-label">isi materi</label>
+                  <textarea class="form-control" id="materi" name="materi" rows="10"></textarea>
               </div>
-                <div class="col-md-12">
-                    <label for="exampleFormControlTextarea1" class="form-label">isi materi</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" name="materi" rows="10"></textarea>
-                </div>
-                <input type="hidden" name="user" value="<?= $this->session->userdata('username')?>" class="form-control" id="inputCity">
+               <input type="hidden" name="user" value=" <?= $this->session->userdata('username')?>" class="form-control" id="materi">
               <div class="col-12">
-                  <button  type="submit" class="btn btn-primary">create</button>
+                  <button type="submit" class="btn btn-primary">create</button>
               </div>
           </form>
 <!-- end form tambah data -->
@@ -103,6 +107,38 @@
     </div>
   </div>
  </div>
- 
- 
+ <div class="modal fade" id="tambahkat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Tambah kategori</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+               <form class="row g-3" method="post" action="<?= site_url('Admin/create')?>" enctype="multipart/form-data">
+
+              <input type="text" name="table" value="kategori">
+              <label for="kategori" class="form-label">kategori</label>
+              <input type="text" name="kategori" class="form-control" id="kategori">
+      </div>
+      <div class="modal-footer">
+               <button type="submit" class="btn btn-primary">create</button>
+         </form>
+      </div>
+    </div>
+  </div>
+</div>
+ <script>
+// Loop through each row and truncate the text if necessary
+<?php for ($j = 1; $j <= $i; $j++) { ?>
+  var rowId = 'row_<?= $j ?>';
+  var teks = document.getElementById(rowId).innerText;
+  var jumlahKarakter = teks.length;
+
+  if (jumlahKarakter > 80) {
+    var potonganTeks = teks.slice(0, 80) + "...";
+    document.getElementById(rowId).innerText = potonganTeks;
+  }
+<?php } ?>
+</script>
 <?php $this->load->view('templates/footer_admin');?>
